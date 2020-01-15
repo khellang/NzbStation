@@ -8,16 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NodaTime;
 using NodaTime.Serialization.SystemTextJson;
-using NzbStation.Commands;
 using NzbStation.Data;
 using NzbStation.Extensions;
-using NzbStation.Models;
-using NzbStation.Queries;
 using NzbStation.Tmdb;
 using Serilog;
 using Serilog.Core;
 using Serilog.Sinks.SystemConsole.Themes;
-using Zynapse;
 
 namespace NzbStation
 {

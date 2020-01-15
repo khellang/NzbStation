@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using NodaTime;
 
 namespace NzbStation.Models
