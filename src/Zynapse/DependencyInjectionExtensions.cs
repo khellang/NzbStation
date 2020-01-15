@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Zynapse;
 
@@ -26,20 +28,32 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             foreach (var type in types)
             {
-                foreach (var handlerType in HandlerTypes)
+                if (ShouldScan(type))
                 {
-                    if (type.IsAssignableTo(handlerType, out var arguments))
+                    foreach (var handlerType in HandlerTypes)
                     {
-                        var serviceType = handlerType.MakeGenericType(arguments);
+                        if (type.IsAssignableTo(handlerType, out var arguments))
+                        {
+                            var serviceType = handlerType.MakeGenericType(arguments);
 
-                        var descriptor = new ServiceDescriptor(serviceType, type, ServiceLifetime.Scoped);
+                            var descriptor = new ServiceDescriptor(serviceType, type, ServiceLifetime.Scoped);
 
-                        services.TryAdd(descriptor);
+                            services.TryAdd(descriptor);
+                        }
                     }
                 }
             }
 
             return services;
+        }
+
+        private static bool ShouldScan(Type type)
+        {
+            return !type.IsSpecialName
+                && !type.IsAbstract
+                && (type.IsPublic || type.IsNestedPublic)
+                && type.IsClass
+                && !type.IsDefined(typeof(CompilerGeneratedAttribute));
         }
 
         private static bool IsAssignableTo(this Type type, Type genericTypeDefinition, out Type[] genericArguments)
