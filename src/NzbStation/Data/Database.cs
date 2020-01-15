@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NzbStation.Data.Entities;
+using NzbStation.Data.ValueConverters;
 
 namespace NzbStation.Data
 {

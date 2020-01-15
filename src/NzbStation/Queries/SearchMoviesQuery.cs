@@ -6,9 +6,9 @@ using Zynapse;
 
 namespace NzbStation.Queries
 {
-    public class SearchMovieQuery : PagedQuery<MovieSearchResultModel>
+    public class SearchMoviesQuery : PagedQuery<MovieSearchResultModel>
     {
-        public SearchMovieQuery(string query, int page)
+        public SearchMoviesQuery(string query, int page)
         {
             Query = query;
             Page = page;
@@ -16,7 +16,7 @@ namespace NzbStation.Queries
 
         public string Query { get; }
 
-        public class Handler : IQueryHandler<SearchMovieQuery, PagedResultModel<MovieSearchResultModel>>
+        public class Handler : IQueryHandler<SearchMoviesQuery, PagedResultModel<MovieSearchResultModel>>
         {
             public Handler(TmdbClient client)
             {
@@ -25,7 +25,7 @@ namespace NzbStation.Queries
 
             private TmdbClient Client { get; }
 
-            public async Task<PagedResultModel<MovieSearchResultModel>> ExecuteAsync(SearchMovieQuery query, CancellationToken cancellationToken)
+            public async Task<PagedResultModel<MovieSearchResultModel>> ExecuteAsync(SearchMoviesQuery query, CancellationToken cancellationToken)
             {
                 var page = query.Page ?? 1;
 

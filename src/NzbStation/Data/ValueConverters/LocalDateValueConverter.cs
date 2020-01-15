@@ -2,7 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NodaTime;
 
-namespace NzbStation.Data
+namespace NzbStation.Data.ValueConverters
 {
     public class LocalDateValueConverter : ValueConverter<LocalDate, DateTime>
     {

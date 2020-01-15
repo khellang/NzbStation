@@ -21,7 +21,7 @@ namespace NzbStation.Controllers
         [HttpGet]
         public async Task<IActionResult> Search([FromQuery] SearchMoviesModel model, CancellationToken cancellationToken)
         {
-            var query = new SearchMovieQuery(model.Q, model.Page ?? 1);
+            var query = new SearchMoviesQuery(model.Q, model.Page ?? 1);
 
             var result = await Executor.ExecuteAsync(query, cancellationToken);
 

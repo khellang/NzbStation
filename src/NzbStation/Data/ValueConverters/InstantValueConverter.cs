@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NodaTime;
 
-namespace NzbStation.Data
+namespace NzbStation.Data.ValueConverters
 {
     public class InstantValueConverter : ValueConverter<Instant, long>
     {
