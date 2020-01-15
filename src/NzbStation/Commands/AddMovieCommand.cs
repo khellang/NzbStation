@@ -6,6 +6,7 @@ using NzbStation.Data;
 using NzbStation.Data.Entities;
 using NzbStation.Models;
 using NzbStation.Tmdb;
+using NzbStation.Utilities;
 using Zynapse;
 
 namespace NzbStation.Commands
@@ -47,6 +48,8 @@ namespace NzbStation.Commands
                         return null;
                     }
 
+                    var normalizedTitle = TitleTransformer.Normalize(tmdbMovie.Title);
+
                     movie = new Movie
                     {
                         Id = tmdbMovie.Id,
@@ -55,7 +58,7 @@ namespace NzbStation.Commands
                         Slug = tmdbMovie.Title,
                         OriginalTitle = tmdbMovie.OriginalTitle,
                         ReleaseDate = tmdbMovie.ReleaseDate,
-                        SortTitle = tmdbMovie.Title,
+                        SortTitle = normalizedTitle,
                         Tagline = tmdbMovie.Tagline,
                         Homepage = tmdbMovie.Homepage,
                         ImdbId = tmdbMovie.ImdbId,
