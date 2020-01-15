@@ -27,7 +27,7 @@ namespace NzbStation.Queries
 
             public Task<PagedResultModel<MovieDetailsModel>> ExecuteAsync(GetAllMoviesQuery query, CancellationToken cancellationToken)
             {
-                return Database.Movies.Select(x => x.MapToModel()).AsPagedAsync(query, cancellationToken);
+                return Database.Movies.OrderBy(x => x.SortTitle).Select(x => x.MapToModel()).AsPagedAsync(query, cancellationToken);
             }
         }
     }
