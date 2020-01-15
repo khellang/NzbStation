@@ -46,6 +46,7 @@ namespace NzbStation.Models
                 Tagline = movie.Tagline,
                 Homepage = movie.Homepage,
                 ImdbId = movie.ImdbId,
+                AddedTime = movie.AddedTime,
             };
         }
     }

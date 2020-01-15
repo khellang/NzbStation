@@ -23,5 +23,7 @@ namespace NzbStation.Models
         public string Overview { get; set; }
 
         public LocalDate? ReleaseDate { get; set; }
+
+        public Instant AddedTime { get; set; }
     }
 }

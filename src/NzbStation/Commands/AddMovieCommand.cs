@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using NodaTime;
 using NzbStation.Data;
 using NzbStation.Data.Entities;
 using NzbStation.Models;
@@ -20,15 +21,18 @@ namespace NzbStation.Commands
 
         public class Handler : ICommandHandler<AddMovieCommand, MovieDetailsModel>
         {
-            public Handler(TmdbClient client, Database database)
+            public Handler(TmdbClient client, Database database, IClock clock)
             {
                 Client = client;
                 Database = database;
+                Clock = clock;
             }
 
             private TmdbClient Client { get; }
 
             private Database Database { get; }
+
+            private IClock Clock { get; }
 
             public async Task<MovieDetailsModel> HandleAsync(AddMovieCommand command, CancellationToken cancellationToken)
             {
@@ -55,6 +59,7 @@ namespace NzbStation.Commands
                         Tagline = tmdbMovie.Tagline,
                         Homepage = tmdbMovie.Homepage,
                         ImdbId = tmdbMovie.ImdbId,
+                        AddedTime = Clock.GetCurrentInstant(),
                     };
 
                     foreach (var genre in tmdbMovie.Genres)

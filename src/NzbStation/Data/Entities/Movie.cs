@@ -30,6 +30,8 @@ namespace NzbStation.Data.Entities
 
         public LocalDate? ReleaseDate { get; set; }
 
+        public Instant AddedTime { get; set; }
+
         public ICollection<MovieGenre> Genres { get; }
     }
 }

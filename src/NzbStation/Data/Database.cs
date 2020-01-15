@@ -23,6 +23,7 @@ namespace NzbStation.Data
         {
             model.Entity<Movie>().Property(x => x.Id).ValueGeneratedNever();
             model.Entity<Movie>().HasIndex(x => x.Slug);
+            model.Entity<Movie>().Property(x => x.AddedTime).HasConversion(InstantValueConverter.Instance);
             model.Entity<Movie>().Property(x => x.ReleaseDate).HasConversion(LocalDateValueConverter.Instance);
 
             model.Entity<Genre>().Property(x => x.Id).ValueGeneratedNever();

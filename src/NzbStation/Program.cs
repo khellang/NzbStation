@@ -60,6 +60,7 @@ namespace NzbStation
         {
             services.AddProblemDetails();
 
+            services.AddSingleton<IClock>(SystemClock.Instance);
             services.AddEntityFrameworkSqlite();
             services.AddDbContext<Database>();
 
