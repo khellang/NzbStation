@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NzbStation.Commands
+namespace Zynapse
 {
     public interface ICommandHandler<in TCommand, TResult> where TCommand : ICommand<TResult>
     {

@@ -5,6 +5,7 @@ using NzbStation.Data;
 using NzbStation.Data.Entities;
 using NzbStation.Models;
 using NzbStation.Tmdb;
+using Zynapse;
 
 namespace NzbStation.Commands
 {

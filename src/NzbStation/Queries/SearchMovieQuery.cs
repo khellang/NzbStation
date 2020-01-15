@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NzbStation.Models;
 using NzbStation.Tmdb;
+using Zynapse;
 
 namespace NzbStation.Queries
 {

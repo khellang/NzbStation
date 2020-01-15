@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NzbStation.Queries
+namespace Zynapse
 {
     public interface IQueryHandler<in TQuery, TResult> where TQuery : IQuery<TResult>
     {

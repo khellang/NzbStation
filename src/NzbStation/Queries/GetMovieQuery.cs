@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NzbStation.Data;
 using NzbStation.Models;
+using Zynapse;
 
 namespace NzbStation.Queries
 {

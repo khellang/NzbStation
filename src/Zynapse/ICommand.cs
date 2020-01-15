@@ -1,4 +1,4 @@
-namespace NzbStation.Commands
+namespace Zynapse
 {
     public interface ICommand<TResult>
     {

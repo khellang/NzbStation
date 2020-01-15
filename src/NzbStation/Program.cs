@@ -18,6 +18,7 @@ using NzbStation.Tmdb;
 using Serilog;
 using Serilog.Core;
 using Serilog.Sinks.SystemConsole.Themes;
+using Zynapse;
 
 namespace NzbStation
 {

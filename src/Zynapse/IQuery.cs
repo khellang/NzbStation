@@ -1,4 +1,4 @@
-namespace NzbStation.Queries
+namespace Zynapse
 {
     public interface IQuery<TResult>
     {

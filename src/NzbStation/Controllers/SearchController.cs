@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NzbStation.Models;
 using NzbStation.Queries;
+using Zynapse;
 
 namespace NzbStation.Controllers
 {

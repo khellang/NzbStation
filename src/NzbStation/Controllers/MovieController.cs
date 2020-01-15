@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NzbStation.Commands;
 using NzbStation.Models;
 using NzbStation.Queries;
+using Zynapse;
 
 namespace NzbStation.Controllers
 {
