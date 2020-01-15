@@ -24,6 +24,8 @@ namespace Zynapse
             return (Task<TResult>) method.Invoke(handler, new object[] { command, cancellationToken });
         }
 
-        private class DummyCommand : ICommand<int> { }
+        private class DummyCommand : ICommand<int>
+        {
+        }
     }
 }

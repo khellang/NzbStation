@@ -24,6 +24,8 @@ namespace Zynapse
             return (Task<TResult>) method.Invoke(handler, new object[] { query, cancellationToken });
         }
 
-        private class DummyQuery : IQuery<int> { }
+        private class DummyQuery : IQuery<int>
+        {
+        }
     }
 }

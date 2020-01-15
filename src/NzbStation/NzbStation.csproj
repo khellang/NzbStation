@@ -5,7 +5,7 @@
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="EFCore.NamingConventions" Version="1.0.0" />
     <PackageReference Include="Hellang.Middleware.ProblemDetails" Version="4.0.0" />
@@ -13,7 +13,7 @@
     <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.0.0-beta01" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Zynapse\Zynapse.csproj" />
   </ItemGroup>
