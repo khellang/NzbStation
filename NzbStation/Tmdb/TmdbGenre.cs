@@ -1,0 +1,13 @@
+using System.Text.Json.Serialization;
+
+namespace NzbStation.Tmdb
+{
+    public class TmdbGenre
+    {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+    }
+}
