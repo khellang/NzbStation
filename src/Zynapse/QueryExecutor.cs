@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace NzbStation.Queries
 {
@@ -18,7 +17,7 @@ namespace NzbStation.Queries
         {
             var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
 
-            var handler = Provider.GetRequiredService(handlerType);
+            var handler = Provider.GetService(handlerType);
 
             var method = handlerType.GetMethod(nameof(IQueryHandler<DummyQuery, int>.ExecuteAsync));
 

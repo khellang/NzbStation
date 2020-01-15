@@ -4,7 +4,6 @@
     <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>true</PublishTrimmed>
-    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   
   <ItemGroup>
@@ -13,5 +12,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
     <PackageReference Include="NodaTime.Serialization.SystemTextJson" Version="1.0.0-beta01" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Zynapse\Zynapse.csproj" />
   </ItemGroup>
 </Project>

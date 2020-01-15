@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace NzbStation.Commands
 {
@@ -18,7 +17,7 @@ namespace NzbStation.Commands
         {
             var handlerType = typeof(ICommandHandler<,>).MakeGenericType(command.GetType(), typeof(TResult));
 
-            var handler = Provider.GetRequiredService(handlerType);
+            var handler = Provider.GetService(handlerType);
 
             var method = handlerType.GetMethod(nameof(ICommandHandler<DummyCommand, int>.HandleAsync));
 

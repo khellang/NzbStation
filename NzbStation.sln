@@ -1,6 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NzbStation", "NzbStation\NzbStation.csproj", "{51346657-AF51-422B-98B8-770CA410A54D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0B377696-358E-42E7-AFFF-D3EC66630497}"
+ProjectSection(SolutionItems) = preProject
+	src\Directory.Build.props = src\Directory.Build.props
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NzbStation", "src\NzbStation\NzbStation.csproj", "{30A0706C-3DED-4DFC-8085-416A10A0FE62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zynapse", "src\Zynapse\Zynapse.csproj", "{1F748CD0-15C3-4980-95A5-B9BAF60B734E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +15,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{51346657-AF51-422B-98B8-770CA410A54D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51346657-AF51-422B-98B8-770CA410A54D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51346657-AF51-422B-98B8-770CA410A54D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51346657-AF51-422B-98B8-770CA410A54D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A0706C-3DED-4DFC-8085-416A10A0FE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A0706C-3DED-4DFC-8085-416A10A0FE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A0706C-3DED-4DFC-8085-416A10A0FE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A0706C-3DED-4DFC-8085-416A10A0FE62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F748CD0-15C3-4980-95A5-B9BAF60B734E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F748CD0-15C3-4980-95A5-B9BAF60B734E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F748CD0-15C3-4980-95A5-B9BAF60B734E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F748CD0-15C3-4980-95A5-B9BAF60B734E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{30A0706C-3DED-4DFC-8085-416A10A0FE62} = {0B377696-358E-42E7-AFFF-D3EC66630497}
+		{1F748CD0-15C3-4980-95A5-B9BAF60B734E} = {0B377696-358E-42E7-AFFF-D3EC66630497}
 	EndGlobalSection
 EndGlobal
