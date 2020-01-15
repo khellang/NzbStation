@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NodaTime;
@@ -63,18 +62,12 @@ namespace NzbStation
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICommandDispatcher, CommandDispatcher>();
-            services.AddScoped<IQueryExecutor, QueryExecutor>();
-
             services.AddProblemDetails();
 
             services.AddEntityFrameworkSqlite();
             services.AddDbContext<Database>();
 
-            // TODO: Scan and register command and query handlers by convention...
-            services.AddScoped<IQueryHandler<GetMovieQuery, MovieDetailsModel>, GetMovieQuery.Handler>();
-            services.AddScoped<IQueryHandler<SearchMovieQuery, PagedResultModel<MovieSearchResultModel>>, SearchMovieQuery.Handler>();
-            services.AddScoped<ICommandHandler<AddMovieCommand, MovieDetailsModel>, AddMovieCommand.Handler>();
+            services.AddZynapse<Program>();
 
             services.AddMvcCore().AddJsonOptions(json =>
             {
