@@ -4,12 +4,26 @@ namespace NzbStation.Models
 {
     public class PagedResultModel<T>
     {
-        public int Page { get; set; }
+        public PagedResultModel(IReadOnlyCollection<T> items, int pageNumber, int pageCount, int totalItemCount)
+        {
+            Items = items;
+            PageNumber = pageNumber;
+            TotalItemCount = totalItemCount;
+            PageCount = pageCount;
+        }
 
-        public int TotalPages { get; set; }
+        public IReadOnlyCollection<T> Items { get; }
 
-        public IReadOnlyCollection<T> Results { get; set; }
+        public int PageNumber { get; }
 
-        public int TotalResults { get; set; }
+        public int PageCount { get; }
+
+        public int TotalItemCount { get; }
+
+        public int ItemCount => Items.Count;
+
+        public bool HasPreviousPage => PageNumber > 1;
+
+        public bool HasNextPage => PageNumber < PageCount;
     }
 }

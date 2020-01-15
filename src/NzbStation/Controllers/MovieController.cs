@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,8 +24,18 @@ namespace NzbStation.Controllers
 
         private IQueryExecutor Executor { get; }
 
+        [HttpGet]
+        public async Task<ActionResult<PagedResultModel<MovieDetailsModel>>> GetAll([FromQuery] PagedQueryModel model, CancellationToken cancellationToken)
+        {
+            var query = new GetAllMoviesQuery(model.Page, model.Size);
+
+            var result = await Executor.ExecuteAsync(query, cancellationToken);
+
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id, CancellationToken cancellationToken)
+        public async Task<ActionResult<MovieDetailsModel>> GetById([FromRoute] int id, CancellationToken cancellationToken)
         {
             var query = new GetMovieQuery(id);
 
@@ -38,7 +50,7 @@ namespace NzbStation.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] AddMovieModel model, CancellationToken cancellationToken)
+        public async Task<ActionResult<MovieDetailsModel>> Add([FromBody] AddMovieModel model, CancellationToken cancellationToken)
         {
             var command = new AddMovieCommand(model.Id.Value);
 

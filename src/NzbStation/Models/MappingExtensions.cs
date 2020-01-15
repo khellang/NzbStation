@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using NzbStation.Data.Entities;
 using NzbStation.Tmdb;
@@ -6,15 +7,13 @@ namespace NzbStation.Models
 {
     public static class MappingExtensions
     {
-        public static PagedResultModel<MovieSearchResultModel> MapToModel(this TmdbPagedResponse<TmdbMovieSearch> response)
+        public static PagedResultModel<MovieSearchResultModel> MapToModel(this TmdbPagedResponse<TmdbMovieSearch> response, int? size)
         {
-            return new PagedResultModel<MovieSearchResultModel>
-            {
-                Page = response.Page,
-                TotalPages = response.TotalPages,
-                TotalResults = response.TotalResults,
-                Results = response.Results.Select(MapToModel).ToList(),
-            };
+            var pageSize = Math.Clamp(size ?? 30, min: 1, max: 200);
+
+            var items = response.Results.Take(pageSize).Select(MapToModel).ToList();
+
+            return new PagedResultModel<MovieSearchResultModel>(items, response.Page, response.TotalPages, response.TotalResults);
         }
 
         public static MovieSearchResultModel MapToModel(this TmdbMovieSearch movie)

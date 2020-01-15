@@ -6,7 +6,7 @@ using Zynapse;
 
 namespace NzbStation.Queries
 {
-    public class SearchMovieQuery : IQuery<PagedResultModel<MovieSearchResultModel>>
+    public class SearchMovieQuery : PagedQuery<MovieSearchResultModel>
     {
         public SearchMovieQuery(string query, int page)
         {
@@ -15,8 +15,6 @@ namespace NzbStation.Queries
         }
 
         public string Query { get; }
-
-        public int Page { get; }
 
         public class Handler : IQueryHandler<SearchMovieQuery, PagedResultModel<MovieSearchResultModel>>
         {
@@ -29,9 +27,11 @@ namespace NzbStation.Queries
 
             public async Task<PagedResultModel<MovieSearchResultModel>> ExecuteAsync(SearchMovieQuery query, CancellationToken cancellationToken)
             {
-                var result = await Client.SearchMoviesAsync(query.Query, query.Page, cancellationToken);
+                var page = query.Page ?? 1;
 
-                return result.MapToModel();
+                var result = await Client.SearchMoviesAsync(query.Query, page, cancellationToken);
+
+                return result.MapToModel(query.Size);
             }
         }
     }
